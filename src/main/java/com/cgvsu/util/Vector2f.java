@@ -1,9 +1,8 @@
-package com.cgvsu;
+package com.cgvsu.util;
 
 public class Vector2f {
     public float x = 0.0f;
     public float y = 0.0f;
-    public float z = 0.0f;
 
     public Vector2f() {}
 
