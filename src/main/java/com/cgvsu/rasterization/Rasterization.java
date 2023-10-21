@@ -66,9 +66,9 @@ public class Rasterization {
                 float w1 = Math.abs(v2.to(p).crossMagnitude(v2.to(v3))) / area;
                 float w2 = Math.abs(v1.to(p).crossMagnitude(v1.to(v3))) / area;
                 float w3 = Math.abs(v1.to(p).crossMagnitude(v1.to(v2))) / area;
-                double red = w1 * c1.getRed() + w2 * c2.getRed() + w3 * c3.getRed();
-                double green = w1 * c1.getGreen() + w2 * c2.getGreen() + w3 * c3.getGreen();
-                double blue = w1 * c1.getBlue() + w2 * c2.getBlue() + w3 * c3.getBlue();
+                double red = clamp(w1 * c1.getRed() + w2 * c2.getRed() + w3 * c3.getRed(), 0.0, 1.0);
+                double green = clamp(w1 * c1.getGreen() + w2 * c2.getGreen() + w3 * c3.getGreen(), 0.0, 1.0);
+                double blue = clamp(w1 * c1.getBlue() + w2 * c2.getBlue() + w3 * c3.getBlue(), 0.0, 1.0);
                 pw.setColor(x, y, new Color(red, green, blue, 1.0));
             }
         }
@@ -89,11 +89,17 @@ public class Rasterization {
                 float w1 = Math.abs(v2.to(p).crossMagnitude(v2.to(v3))) / area;
                 float w2 = Math.abs(v1.to(p).crossMagnitude(v1.to(v3))) / area;
                 float w3 = Math.abs(v1.to(p).crossMagnitude(v1.to(v2))) / area;
-                double red = w1 * c1.getRed() + w2 * c2.getRed() + w3 * c3.getRed();
-                double green = w1 * c1.getGreen() + w2 * c2.getGreen() + w3 * c3.getGreen();
-                double blue = w1 * c1.getBlue() + w2 * c2.getBlue() + w3 * c3.getBlue();
+                double red = clamp(w1 * c1.getRed() + w2 * c2.getRed() + w3 * c3.getRed(), 0.0, 1.0);
+                double green = clamp(w1 * c1.getGreen() + w2 * c2.getGreen() + w3 * c3.getGreen(), 0.0, 1.0);
+                double blue = clamp(w1 * c1.getBlue() + w2 * c2.getBlue() + w3 * c3.getBlue(), 0.0, 1.0);
                 pw.setColor(x, y, new Color(red, green, blue, 1.0));
             }
         }
+    }
+
+    private static double clamp(double v, double min, double max) {
+        if (v < min) return min;
+        if (v > max) return max;
+        return v;
     }
 }

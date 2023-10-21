@@ -1,13 +1,29 @@
 package com.cgvsu.rasterizationfxapp;
 
 import com.cgvsu.rasterization.Rasterization;
+import com.cgvsu.util.Triangle;
 import com.cgvsu.util.Vector2f;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 public class RasterizationController {
+    private Triangle trig = new Triangle(
+            new Vector2f(400.0f, 150.0f),
+            new Vector2f(400.0f, 300.0f),
+            new Vector2f(400.0f, 450.0f),
+            Color.RED,
+            Color.LIME,
+            Color.BLUE
+    );
+
+    private Vector2f vertToMove = trig.v2;
+
     @FXML
     private AnchorPane anchorPane;
     @FXML
@@ -17,11 +33,34 @@ public class RasterizationController {
     private void initialize() {
         anchorPane.prefWidthProperty().addListener((ov, oldValue, newValue) -> canvas.setWidth(newValue.doubleValue()));
         anchorPane.prefHeightProperty().addListener((ov, oldValue, newValue) -> canvas.setHeight(newValue.doubleValue()));
+        redrawTriangle();
+    }
 
-        Rasterization.drawTriangle(
-                canvas.getGraphicsContext2D().getPixelWriter(),
-                new Vector2f(0.0f, 600.0f), new Vector2f(800.0f, 600.0f), new Vector2f(800.0f, 0.0f),
-                Color.RED, Color.LIME, Color.BLUE
-        );
+    public void handleMouse(MouseEvent e) {
+        if (e.isPrimaryButtonDown()) {
+            vertToMove.set((float) e.getSceneX(), (float) e.getSceneY());
+            redrawTriangle();
+        }
+    }
+
+    public void handleKey(KeyEvent e) {
+        if (e.getEventType() == KeyEvent.KEY_PRESSED) {
+            switch (e.getText()) {
+                case "1":
+                    vertToMove = trig.v1;
+                    break;
+                case "2":
+                    vertToMove = trig.v2;
+                    break;
+                case "3":
+                    vertToMove = trig.v3;
+                    break;
+            }
+        }
+    }
+
+    private void redrawTriangle() {
+        canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        Rasterization.drawTriangle(canvas.getGraphicsContext2D().getPixelWriter(), trig);
     }
 }
