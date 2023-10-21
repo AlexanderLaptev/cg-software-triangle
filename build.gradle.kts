@@ -13,6 +13,10 @@ javafx {
     modules("javafx.controls", "javafx.fxml")
 }
 
+application {
+    mainClass.set("com.cgvsu.rasterizationfxapp.RasterizationApplication")
+}
+
 group = "com.cgvsu"
 version = "0.1.0"
 description = "TriangleRasterization"

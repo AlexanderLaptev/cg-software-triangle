@@ -6,7 +6,7 @@ public class Vector2f {
     public float x = 0.0f;
     public float y = 0.0f;
 
-    public Vector2f() {}
+    public Vector2f() { }
 
     public Vector2f(float x, float y) {
         this.x = x;
@@ -16,6 +16,10 @@ public class Vector2f {
     public Vector2f(Vector2f other) {
         this.x = other.x;
         this.y = other.y;
+    }
+
+    public Vector2f to(Vector2f end) {
+        return new Vector2f(end.x - x, end.y - y);
     }
 
     public void set(float x, float y) {

@@ -13,6 +13,7 @@ public class RasterizationApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(RasterizationApplication.class.getResource("mainwindow.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         stage.setTitle("Rasterization App");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
