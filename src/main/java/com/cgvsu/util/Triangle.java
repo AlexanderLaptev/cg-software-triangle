@@ -6,14 +6,18 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Triangle {
+    private static final Color DEFAULT_COLOR_1 = Color.RED;
+    private static final Color DEFAULT_COLOR_2 = Color.LIME;
+    private static final Color DEFAULT_COLOR_3 = Color.BLUE;
+
     private static final Random rand = ThreadLocalRandom.current();
 
     public final Vector2f v1;
     public final Vector2f v2;
     public final Vector2f v3;
-    public Color c1 = Color.RED;
-    public Color c2 = Color.LIME;
-    public Color c3 = Color.BLUE;
+    public Color c1 = DEFAULT_COLOR_1;
+    public Color c2 = DEFAULT_COLOR_2;
+    public Color c3 = DEFAULT_COLOR_3;
 
     public Triangle(Vector2f v1, Vector2f v2, Vector2f v3, Color c1, Color c2, Color c3) {
         this.v1 = v1;
@@ -40,5 +44,11 @@ public class Triangle {
         c1 = ColorUtils.getRandomColor();
         c2 = ColorUtils.getRandomColor();
         c3 = ColorUtils.getRandomColor();
+    }
+
+    public void resetColors() {
+        c1 = DEFAULT_COLOR_1;
+        c2 = DEFAULT_COLOR_2;
+        c3 = DEFAULT_COLOR_3;
     }
 }
