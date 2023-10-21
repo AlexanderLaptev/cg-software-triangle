@@ -20,7 +20,7 @@ application {
 group = "com.cgvsu"
 version = "0.1.0"
 description = "TriangleRasterization"
-java.sourceCompatibility = JavaVersion.VERSION_18
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 tasks.compileJava {
     options.encoding = "UTF-8"
