@@ -12,9 +12,9 @@ import javafx.scene.paint.Color;
 
 public class RasterizationController {
     private final Triangle triangle = new Triangle(
-            new Vector2f(400.0f, 150.0f),
-            new Vector2f(400.0f, 300.0f),
-            new Vector2f(400.0f, 450.0f),
+            new Vector2f(100.0f, 300.0f),
+            new Vector2f(400.0f, 200.0f),
+            new Vector2f(700.0f, 300.0f),
             Color.RED,
             Color.LIME,
             Color.BLUE
