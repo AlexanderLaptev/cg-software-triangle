@@ -18,7 +18,7 @@ application {
 }
 
 group = "com.cgvsu"
-version = "0.1.0"
+version = "1.0.0"
 description = "TriangleRasterization"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
