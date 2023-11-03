@@ -1,4 +1,4 @@
-package com.cgvsu.util;
+package com.cgvsu.rasterization.triangle;
 
 import javafx.scene.paint.Color;
 

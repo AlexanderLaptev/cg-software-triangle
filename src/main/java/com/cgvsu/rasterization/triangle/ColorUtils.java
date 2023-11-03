@@ -1,4 +1,4 @@
-package com.cgvsu.util;
+package com.cgvsu.rasterization.triangle;
 
 import javafx.scene.paint.Color;
 
@@ -15,12 +15,5 @@ public class ColorUtils {
                 rand.nextDouble(),
                 1.0f
         );
-    }
-
-    public static String colorToHexLabel(Color c) {
-        return String.format("#%02x%02x%02x",
-                (int) c.getRed() * 255,
-                (int) c.getGreen() * 255,
-                (int) c.getBlue() * 255);
     }
 }
