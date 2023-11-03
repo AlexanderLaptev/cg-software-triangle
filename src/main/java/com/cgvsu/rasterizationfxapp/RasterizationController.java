@@ -1,8 +1,8 @@
 package com.cgvsu.rasterizationfxapp;
 
-import com.cgvsu.rasterization.Rasterization;
-import com.cgvsu.util.Triangle;
-import com.cgvsu.util.Vector2f;
+import com.cgvsu.rasterization.triangle.TriangleRasterization;
+import com.cgvsu.rasterization.triangle.Triangle;
+import com.cgvsu.rasterization.triangle.Vector2f;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
@@ -67,6 +67,6 @@ public class RasterizationController {
 
     private void redrawTriangle() {
         canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        Rasterization.drawTriangle(canvas.getGraphicsContext2D().getPixelWriter(), triangle);
+        TriangleRasterization.drawTriangle(canvas.getGraphicsContext2D().getPixelWriter(), triangle);
     }
 }
